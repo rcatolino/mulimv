@@ -12,16 +12,16 @@ let g:mulimv_sessionname = "mulimv"
 let g:mulimv_repl = "lein repl"
 let g:mulimv_term_emulator = "konsole -e"
 
-function! Mulimv_start_repl!()
+function! Mulimv_start_repl()
   echo system("screen -S mulimv -X quit&")
   echo system(g:mulimv_term_emulator . " screen -S " . g:mulimv_sessionname . " " . g:mulimv_repl . "&")
 endfunction
 
-function! Load!()
+function! Load()
   echo system("screen -S " . g:mulimv_sessionname . " -X stuff '(load \"". expand('%:t:r') . "\")'\r")
 endfunction
 
-function! Send_to_Screen!(text)
+function! Send_to_Screen(text)
   "Make sure the line ends with a newline so that the repl evaluate the
   "expression.
   if match(a:text, "\n") == -1
